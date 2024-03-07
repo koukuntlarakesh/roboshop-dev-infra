@@ -48,7 +48,7 @@ name  = "/${var.project_name}-${var.environment}/dispatch_Sg_id"
   value = module.dispatch.security_grp
   }
 resource "aws_ssm_parameter" "security_grp_payment" {
-name  = "/${var.project_name}-${var.environment}/payment_Sg_id"
+ name  = "/${var.project_name}-${var.environment}/payment_Sg_id"
   type  = "String"
   value = module.payment.security_grp
   }
@@ -60,7 +60,7 @@ name  = "/${var.project_name}-${var.environment}/web_Sg_id"
   }
 
   resource "aws_ssm_parameter" "security_grp_vpn" {
-  name  = "/${var.project_name}-${var.environment}/vpn_Sg_id"
+  name  = "/${var.project_name}-${var.environment}/security_grp_vpn"
   type  = "String"
   value = module.vpn.security_grp
   }

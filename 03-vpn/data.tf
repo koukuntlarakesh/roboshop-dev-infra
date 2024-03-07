@@ -60,8 +60,8 @@ data "aws_subnet" "selected" {
   availability_zone = "us-east-1a"
 }
 
-data "aws_ssm_parameter" "vpn_sg_id" {
-   name  = "/${var.project_name}-${var.environment}/vpn_Sg_id"
+data "aws_ssm_parameter" "security_grp_vpn" {
+   name  = "/${var.project_name}-${var.environment}/security_grp_vpn"
 }
 # output "vpc_info" {
 #   value = data.aws_subnet.selected.id
