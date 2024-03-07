@@ -16,7 +16,7 @@ data "aws_ssm_parameter" "database_subnets" {
 
 
 
-data "aws_ssm_parameter" "vpn_Sg_id" {
+data "aws_ssm_parameter" "security_grp_vpn" {
 
   name  = "/${var.project_name}-${var.environment}/vpn_Sg_id"
 }

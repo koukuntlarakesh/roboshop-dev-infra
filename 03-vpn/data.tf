@@ -61,7 +61,7 @@ data "aws_subnet" "selected" {
 }
 
 data "aws_ssm_parameter" "security_grp_vpn" {
-   name  = "/${var.project_name}-${var.environment}/security_grp_vpn"
+   name  = "/${var.project_name}-${var.environment}/vpn_Sg_id"
 }
 # output "vpc_info" {
 #   value = data.aws_subnet.selected.id
