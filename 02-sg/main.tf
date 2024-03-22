@@ -213,13 +213,13 @@ resource "aws_security_group_rule" "app_alb_dispatch" {
   security_group_id = module.app_alb.security_grp
 }
 # traffic accepting from the internet through to  the web alb 
-resource "aws_security_group_rule" "web_alb_" {
+resource "aws_security_group_rule" "web_alb" {
   type                     = "ingress"
   from_port                = 443
   to_port                  = 443
   protocol                 = "tcp"
   cidr_blocks              = ["0.0.0.0/0"]
-  security_group_id = module.app_alb.security_grp
+  security_group_id = module.web_alb.security_grp
 }
 #openvpn
 resource "aws_security_group_rule" "vpn_home" {
@@ -506,7 +506,7 @@ resource "aws_security_group_rule" "web_vpn" {
 }
 
 resource "aws_security_group_rule" "web_internet" {
-  cidr_blocks = ["0.0.0.0/0"]
+  cidr_blocks              = ["0.0.0.0/0"]
   type                     = "ingress"
   from_port                = 80
   to_port                  = 80

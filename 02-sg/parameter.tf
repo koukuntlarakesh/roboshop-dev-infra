@@ -72,7 +72,7 @@ name  = "/${var.project_name}-${var.environment}/app_alb_Sg_id"
   }
 
    resource "aws_ssm_parameter" "security_grp_web_alb" {
-name  = "/${var.project_name}-${var.environment}/web_alb_Sg_id"
+   name  = "/${var.project_name}-${var.environment}/web_alb_Sg_id"
   type  = "String"
   value = module.web_alb.security_grp
   }
