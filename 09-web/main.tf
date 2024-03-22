@@ -82,7 +82,7 @@ resource "null_resource" "web_delete" {
 
 resource "aws_launch_template" "web" {
   name                                 = "${local.name}-${var.tags.Component}"
-  image_id                             = "ami-test"
+  image_id                             =  aws_ami_from_instance.web.id
   instance_initiated_shutdown_behavior = "terminate"
   instance_type                        = "t2.micro"
   vpc_security_group_ids               = [data.aws_ssm_parameter.security_grp_web.value]
@@ -102,7 +102,7 @@ resource "aws_autoscaling_group" "web" {
   health_check_grace_period = 60
   health_check_type         = "ELB"
   desired_capacity          = 2
-  vpc_zone_identifier       = split(",", data.aws_ssm_parameter.public_subnets.value)
+  vpc_zone_identifier       = split(",", data.aws_ssm_parameter.private_subnets.value)
 
   launch_template {
     id      = aws_launch_template.web.id
