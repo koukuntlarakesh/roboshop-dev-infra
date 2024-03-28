@@ -30,10 +30,11 @@ pipeline {
                 """
             }
         }
-        tage('apply') {
+        stage('apply') {
             input {
                 message "Should we continue?"
                 ok "Yes, we should."
+            }
             steps {
                 sh """
                    cd 0-vpc
@@ -52,4 +53,3 @@ pipeline {
 
     }  
     
-}
