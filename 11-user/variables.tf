@@ -19,7 +19,9 @@ variable "common_tags" {
   }
 }
 variable "tags" {
- default = {Component = "user"}
+ default = {
+    Component = "user"
+    }
 }
 variable "priority" {
   default = "25"

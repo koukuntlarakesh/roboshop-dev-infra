@@ -22,7 +22,7 @@ module "web" {
   instance_type          = "t2.micro"
   vpc_security_group_ids = [data.aws_ssm_parameter.security_grp_web.value]
   subnet_id              = local.private_subnets
-  #iam_instance_profile   = "ec2roleforshellscript"
+  iam_instance_profile   = "ec2roleforshellscript"
   tags                   = merge(var.common_tags, var.tags)
 }
 
@@ -103,7 +103,7 @@ resource "aws_autoscaling_group" "web" {
   health_check_type         = "ELB"
   desired_capacity          = 2
   vpc_zone_identifier       = split(",", data.aws_ssm_parameter.private_subnets.value)
-
+  target_group_arns =  [aws_lb_target_group.web.arn]
   launch_template {
     id      = aws_launch_template.web.id
     version = aws_launch_template.web.latest_version

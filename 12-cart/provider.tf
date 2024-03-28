@@ -7,7 +7,7 @@ terraform {
   }
   backend "s3" {
     bucket         = "roboshop-dev"
-    key            = "cdn"
+    key            = "cart-dev"
     region         = "us-east-1"
     dynamodb_table = "roboshop-dev"
    }

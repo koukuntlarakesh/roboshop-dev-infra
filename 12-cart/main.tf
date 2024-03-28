@@ -1,7 +1,7 @@
-module "user" {
+module "cart" {
   source = "../../terraform_roboshop_app"
   vpc_id = data.aws_ssm_parameter.vpc_id.value
-  security_group_id = data.aws_ssm_parameter.user_Sg_id.value
+  security_group_id = data.aws_ssm_parameter.cart_Sg_id.value
   private_subnet_ids = split(",",data.aws_ssm_parameter.private_subnets.value)
   iam_instance_profile = var.iam_instance_profile
   project_name = var.project_name
