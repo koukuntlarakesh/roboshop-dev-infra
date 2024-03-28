@@ -6,7 +6,6 @@ terraform {
     }
   }
   backend "s3" {
-    
     bucket         = "roboshop-dev"
     key            = "vpc-dev"
     region         = "us-east-1"
