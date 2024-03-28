@@ -1,0 +1,54 @@
+pipeline {
+   agent {
+    node {
+        label 'agent1'
+    }
+    }
+    options {
+        timeout(time: 1, unit: 'HOURS') 
+        disableConcurrentBuilds()
+    }
+    environment {
+        GREETING ='HELLO JENIKINS'
+    }
+    
+    stages {
+       
+        stage('inti') {
+            steps {
+                sh """
+                   cd 0-vpc
+                   terraform init -reconfigure
+                """
+            }
+        }
+        stage('plan') {
+            steps {
+                sh """
+                   cd 0-vpc
+                   terraform plan 
+                """
+            }
+        }
+        tage('apply') {
+            input {
+                message "Should we continue?"
+                ok "Yes, we should."
+            steps {
+                sh """
+                   cd 0-vpc
+                   terraform apply -auto-approve
+                """
+            }
+        }
+        
+    }
+     post { 
+        always { 
+            echo 'I will always say Hello again!'
+             echo 'I will always say Hello again!'
+        }
+     }
+        
+    
+}
