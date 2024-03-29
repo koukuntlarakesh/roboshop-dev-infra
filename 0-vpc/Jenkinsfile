@@ -38,10 +38,7 @@ pipeline {
                 params.action == 'apply'
             }
             }
-            input {
-                message "Should we continue?"
-                ok "Yes, we should."
-            }
+           
             steps {
                 sh """
                    cd 0-vpc
@@ -58,10 +55,7 @@ pipeline {
             }
             
            }
-            input {
-                message "Should we continue?"
-                ok "Yes, we should."
-            }
+            
             steps {
                 sh """
                    cd 0-vpc
