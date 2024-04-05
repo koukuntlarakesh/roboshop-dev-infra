@@ -1,0 +1,71 @@
+pipeline {
+    agent {
+    node {
+        label 'agent1'
+    }
+    }
+    options {
+            ansiColor('xterm')
+            //timeout(time: 1, unit: 'HOURS')
+            //disableConcurrentBuilds()
+    }
+    stages {
+        stage("vpc"){
+            steps {
+                 sh """
+                   cd 0-vpc
+                   terraform init -reconfigure
+                   terraform apply -auto-approve
+                 """
+            }
+            }
+            stage("Securitygrp"){
+                steps{
+                    sh """
+                     cd 02-sg
+                     terraform init -reconfigure
+                     terraform apply -auto-approve
+                    """
+                }
+            }
+            stage("vpn"){
+               steps{
+                sh """
+                    cd 03-vpn
+                    terraform init -reconfigure
+                    terraform apply -auto-approve
+                """
+               }
+               }
+              stage("DB ALB"){
+                parallel{
+                     stage("DB"){
+                     steps{
+                      sh """
+                         cd 04-database
+                         terraform init -reconfigure
+                         terraform apply -auto-approve
+                      """
+                      }
+                     }
+                     stage("ALB") {
+                     steps{
+                        sh """
+                           cd 05-app-alb
+                           terraform init -reconfigure
+                           terraform apply -auto-approve
+                        """
+                     }
+                     }
+                   
+                }
+              }
+
+    }
+    post {
+        success { 
+                echo "the process is success"
+                }
+                       
+        }
+}

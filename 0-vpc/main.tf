@@ -9,6 +9,6 @@ module "vpc" {
      private_subnets_cidr = var.private_subnets_cidr
      database_subnets_cidr = var.database_subnets_cidr
     # acceptor_vpc_required = true
-
+     acceptor_vpc_required= var.is_peering_required
 }
 
