@@ -1,0 +1,71 @@
+pipeline{
+    agent {
+        node {
+            label 'agent1' 
+        }
+        
+    }
+    environment
+    {
+        ansiColor('xterm')
+    }
+    stages {
+      stage("DB ALB"){
+        parallel{
+            stage("DB"){
+                     steps {
+                            sh """
+                            cd 04-database
+                            terraform init -reconfigure
+                            terraform destroy  -auto-approve
+                            """
+                            }
+                        }
+            stage("ALB"){
+                   steps {
+                       sh """
+                        cd 05-app_alb
+                        terraform init -reconfigure
+                        terraform destroy -auto-approve
+                       """
+                         }
+                       }
+                }
+
+        }
+        stage("vpn"){
+            steps{
+                sh """
+                cd  03-vpn
+                terraform init -reconfigure
+                terraform destroy -auto-approve
+                """
+            }
+        }
+        stage("sg"){
+            steps{
+                sh """
+                cd 02-sg
+                terraform init -reconfigure
+                terraform destroy -auto-approve
+                """
+            }
+        }
+        stage("0-vpc"){
+            steps{
+                sh """
+                cd 0-vpc
+                terraform init -reconfigure
+                terraform destroy -auto-approve
+                """
+            }
+        }
+            
+    }
+    post
+    {
+        success{
+            echo "The destroy process is success"
+        }
+    }
+}
