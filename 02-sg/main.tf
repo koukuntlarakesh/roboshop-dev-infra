@@ -100,7 +100,7 @@ module "shipping" {
   sg_tags = var.sg_tags
 }
 module "dispatch" {
-  source = "git::https://github.com/daws-76s/terraform-aws-security-group.git?ref=mainf"
+  source = "git::https://github.com/daws-76s/terraform-aws-security-group.git?ref=main"
   sg_name = "dispatch"
   project_name = var.project_name
   environment = var.environment
@@ -130,7 +130,7 @@ module "app_alb" {
   sg_tags = var.sg_tags
 }
 module "web_alb" {
-  source = "git::https://github.com/koukuntlarakesh/roboshop_aws_sg.git?ref=main"
+  source = "git::https://github.com/daws-76s/terraform-aws-security-group.git?ref=main"
   sg_name ="web_alb"
   project_name = var.project_name
   environment = var.environment
