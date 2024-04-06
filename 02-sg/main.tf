@@ -1,5 +1,5 @@
 module "vpn" {
-  source = "git::https://github.com/koukuntlarakesh/roboshop_aws_sg/roboshop_aws_sg.git?main.tf"
+  source = "git::https://github.com/koukuntlarakesh/roboshop_aws_sg/roboshop_aws_sg.git?ref=main"
   sg_name = "vpn"
   project_name = var.project_name
   environment = var.environment
@@ -7,9 +7,10 @@ module "vpn" {
   description = "sg for vpn"
   vpc_id = data.aws_vpc.vpn.id
   sg_tags = var.sg_tags
+  
 }
 module "mongodb" {
-  source = "git::https://github.com/koukuntlarakesh/roboshop_aws_sg/roboshop_aws_sg.git?main.tf"
+  source = "git::https://github.com/koukuntlarakesh/roboshop_aws_sg/roboshop_aws_sg.git?ref=main"
   sg_name = "mongodb"
   project_name = var.project_name
   environment = var.environment
@@ -19,7 +20,7 @@ module "mongodb" {
   sg_tags = var.sg_tags
 }
 module "redis" {
-  source = "git::https://github.com/koukuntlarakesh/roboshop_aws_sg/roboshop_aws_sg.git?main.tf"
+  source = "git::https://github.com/koukuntlarakesh/roboshop_aws_sg/roboshop_aws_sg.git?ref=main"
   sg_name = "redis"
   project_name = var.project_name
   environment = var.environment
@@ -29,7 +30,7 @@ module "redis" {
   sg_tags = var.sg_tags
 }
 module "rabbitmq" {
-  source = "git::https://github.com/koukuntlarakesh/roboshop_aws_sg/roboshop_aws_sg.git?main.tf"
+  source = "git::https://github.com/koukuntlarakesh/roboshop_aws_sg/roboshop_aws_sg.git?ref=main"
   sg_name = "rabbitmq"
   project_name = var.project_name
   environment = var.environment
@@ -39,7 +40,7 @@ module "rabbitmq" {
   sg_tags = var.sg_tags
 }
 module "mysql" {
-  source = "git::https://github.com/koukuntlarakesh/roboshop_aws_sg/roboshop_aws_sg.git?main.tf"
+  source = "git::https://github.com/koukuntlarakesh/roboshop_aws_sg/roboshop_aws_sg.git?ref=main"
   sg_name ="mysql"
   project_name = var.project_name
   environment = var.environment
@@ -49,7 +50,7 @@ module "mysql" {
   sg_tags = var.sg_tags
 }
 module "catalogue" {
-  source = "git::https://github.com/koukuntlarakesh/roboshop_aws_sg/roboshop_aws_sg.git?main.tf"
+  source = "git::https://github.com/koukuntlarakesh/roboshop_aws_sg/roboshop_aws_sg.git?ref=main"
   sg_name = "catalogue"
   project_name = var.project_name
   environment = var.environment
@@ -59,7 +60,7 @@ module "catalogue" {
   sg_tags = var.sg_tags
 }
 module "user" {
-  source = "git::https://github.com/koukuntlarakesh/roboshop_aws_sg/roboshop_aws_sg.git?main.tf"
+  source = "git::https://github.com/koukuntlarakesh/roboshop_aws_sg/roboshop_aws_sg.git?ref=main"
   sg_name = "user"
   project_name = var.project_name
   environment = var.environment
@@ -69,7 +70,7 @@ module "user" {
   sg_tags = var.sg_tags
 }
 module "cart" {
-  source = "git::https://github.com/koukuntlarakesh/roboshop_aws_sg/roboshop_aws_sg.git?main.tf"
+  source = "git::https://github.com/koukuntlarakesh/roboshop_aws_sg/roboshop_aws_sg.git?ref=main"
   sg_name = "cart"
   project_name = var.project_name
   environment = var.environment
@@ -79,7 +80,7 @@ module "cart" {
   sg_tags = var.sg_tags
 }
 module "payment" {
-  source = "git::https://github.com/koukuntlarakesh/roboshop_aws_sg/roboshop_aws_sg.git?main.tf"
+  source = "git::https://github.com/koukuntlarakesh/roboshop_aws_sg/roboshop_aws_sg.git?ref=main"
   sg_name ="payment"
   project_name = var.project_name
   environment = var.environment
@@ -89,7 +90,7 @@ module "payment" {
   sg_tags = var.sg_tags
 }
 module "shipping" {
-  source = "git::https://github.com/koukuntlarakesh/roboshop_aws_sg/roboshop_aws_sg.git?main.tf"
+  source = "git::https://github.com/koukuntlarakesh/roboshop_aws_sg/roboshop_aws_sg.git?ref=main"
   sg_name = "shipping"
   project_name = var.project_name
   environment = var.environment
@@ -99,7 +100,7 @@ module "shipping" {
   sg_tags = var.sg_tags
 }
 module "dispatch" {
-  source = "git::https://github.com/koukuntlarakesh/roboshop_aws_sg/roboshop_aws_sg.git?main.tf"
+  source = "git::https://github.com/koukuntlarakesh/roboshop_aws_sg/roboshop_aws_sg.git?ref=mainf"
   sg_name = "dispatch"
   project_name = var.project_name
   environment = var.environment
@@ -109,7 +110,7 @@ module "dispatch" {
   sg_tags = var.sg_tags
 }
 module "web" {
-  source = "git::https://github.com/koukuntlarakesh/roboshop_aws_sg/roboshop_aws_sg.git?main.tf"
+  source = "git::https://github.com/koukuntlarakesh/roboshop_aws_sg/roboshop_aws_sg.git?ref=main"
   sg_name ="web"
   project_name = var.project_name
   environment = var.environment
@@ -119,7 +120,7 @@ module "web" {
   sg_tags = var.sg_tags
 }
 module "app_alb" {
-  source = "git::https://github.com/koukuntlarakesh/roboshop_aws_sg/roboshop_aws_sg.git?main.tf"
+  source = "git::https://github.com/koukuntlarakesh/roboshop_aws_sg/roboshop_aws_sg.git?ref=main"
   sg_name ="app_alb"
   project_name = var.project_name
   environment = var.environment
@@ -129,7 +130,7 @@ module "app_alb" {
   sg_tags = var.sg_tags
 }
 module "web_alb" {
-  source = "git::https://github.com/koukuntlarakesh/roboshop_aws_sg/roboshop_aws_sg.git?main.tf"
+  source = "git::https://github.com/koukuntlarakesh/roboshop_aws_sg/roboshop_aws_sg.git?ref=main"
   sg_name ="web_alb"
   project_name = var.project_name
   environment = var.environment
